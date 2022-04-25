@@ -1,40 +1,14 @@
 <mat-tab-group>
   <mat-tab label="First">
     <button mat-raised-button color="primary">Create</button>
-    <table
-      mat-table
-      [dataSource]="this.ReifyService.petStoreInventory"
-      class="mat-elevation-z8"
-    >
-      <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
-
-      <!-- Position Column -->
-      <!-- <ng-container matColumnDef="missing">
-        <th mat-header-cell *matHeaderCellDef>Missing</th>
-        <td mat-cell *matCellDef="let element">{{ element[1].Missing }}</td>
-      </ng-container> -->
-
-      <!-- Name Column -->
-      <ng-container matColumnDef="available">
-        <th mat-header-cell *matHeaderCellDef>Available</th>
-        <td mat-cell *matCellDef="let element">{{ element[1].available }}</td>
-      </ng-container>
-
-      <!-- Weight Column -->
-      <ng-container matColumnDef="pending">
-        <th mat-header-cell *matHeaderCellDef>Pending</th>
-        <td mat-cell *matCellDef="let element">{{ element[1].pending }}</td>
-      </ng-container>
-
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef>Status</th>
-        <td mat-cell *matCellDef="let element">{{ element[1].status }}</td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <table *ngFor="let petdata of petList">
+      <thead></thead>
+      <tr>
+        <th>available</th>
+      </tr>
+      <tbody>
+        <td>{{ petdata.available }}</td>
+      </tbody>
     </table>
   </mat-tab>
   <mat-tab label="Second"> Content 2 </mat-tab>

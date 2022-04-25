@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,18 +13,11 @@ export class ReifyService {
 
   ngOnInit() {}
 
-  public getPetStoreInventory() {
-    this.http
-      .get<any>('https://petstore.swagger.io/v2/store/inventory')
-      .subscribe({
-        next: (data) => {
-          this.petStoreInventory.push(data);
-          console.log(this.petStoreInventory, 'mylog');
-        },
-        error: (error) => {
-          this.errorMessage = error.message;
-          console.error('There was an error!', error);
-        },
-      });
+  public getPetStoreInventory(): any {
+    return this.http.get('https://petstore.swagger.io/v2/store/inventory').pipe(
+      catchError((err) => {
+        return throwError(() => new err());
+      })
+    );
   }
 }

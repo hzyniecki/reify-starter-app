@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReifyComponent } from './reify/reify.component';
 import { ReifyService } from './services/reify.service';
+import { ToastrModule } from 'ngx-toastr';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -31,6 +32,11 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatSelectModule,
     MatRadioModule,
     MatGridListModule,
+    ToastrModule.forRoot({
+      closeButton: true,
+      progressBar: true,
+      timeOut: 5000,
+    }),
   ],
   providers: [ReifyService],
   bootstrap: [AppComponent],

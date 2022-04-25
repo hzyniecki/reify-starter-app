@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReifyService } from '../services/reify.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-reify',
@@ -7,11 +8,25 @@ import { ReifyService } from '../services/reify.service';
   styleUrls: ['./reify.component.scss'],
 })
 export class ReifyComponent implements OnInit {
-  displayedColumns: string[] = ['available', 'pending', 'status'];
+  public petList: any[] = [];
 
-  constructor(public ReifyService: ReifyService) {}
+  constructor(
+    public ReifyService: ReifyService,
+    public toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
-    this.ReifyService.getPetStoreInventory();
+    this.getPetStoreInventory();
+  }
+
+  getPetStoreInventory() {
+    this.petList = [];
+    this.ReifyService.getPetStoreInventory().subscribe((res) => {
+      this.petList.push(res);
+      console.log(this.petList, 'petlist');
+    });
+    (error) => {
+      this.toastr.error('failed to get ...' + error);
+    };
   }
 }
