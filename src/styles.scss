@@ -167,3 +167,32 @@ footer a {
 .reify-banner {
   width: 10rem;
 }
+
+.edit-btn {
+  float: right;
+  margin-top: -11px !important;
+}
+
+.description-title {
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.mat-typography {
+  background-color: #eaeaea;
+}
+
+.hide-show-details {
+  text-align: center;
+}
+
+.open-enrollment {
+  background-color: #008001;
+  color: #fff;
+  border-radius: 3px;
+  padding: 3px;
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  margin-top: -23px;
+}

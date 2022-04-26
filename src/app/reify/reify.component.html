@@ -1,16 +1,39 @@
-<mat-tab-group>
-  <mat-tab label="First">
-    <button mat-raised-button color="primary">Create</button>
-    <table *ngFor="let petdata of petList">
-      <thead></thead>
-      <tr>
-        <th>available</th>
-      </tr>
-      <tbody>
-        <td>{{ petdata.available }}</td>
-      </tbody>
-    </table>
-  </mat-tab>
-  <mat-tab label="Second"> Content 2 </mat-tab>
-  <mat-tab label="Third"> Content 3 </mat-tab>
-</mat-tab-group>
+<div *ngFor="let trials of this.trialsData">
+  <mat-card>
+    <button mat-raised-button class="edit-btn">
+      <i class="fa-solid fa-pen-to-square"></i> Edit
+    </button>
+    <span
+      class="open-enrollment"
+      *ngIf="trials.first_enrollment_at && trialsDate < todaysDate"
+    >
+      Open Enrollment
+    </span>
+
+    <div *ngIf="trials.name">
+      <mat-card-subtitle> {{ trials.name }}</mat-card-subtitle>
+    </div>
+    <div>
+      <mat-divider></mat-divider>
+    </div>
+    <div *ngIf="detailsHidden">
+      <div *ngIf="trials.description">
+        <div class="description-title">Description</div>
+        <mat-card-content> {{ trials.description }}</mat-card-content>
+      </div>
+      <div *ngIf="trials.first_enrollment_at">
+        <div class="description-title">First Enrollment</div>
+        <div>{{ trials.first_enrollment_at }}</div>
+      </div>
+      <div
+        class="hide-show-details"
+        *ngIf="trials.description || trials.first_enrollment_at"
+      >
+        <button (click)="showDetails(true)">hide details</button>
+        <button (click)="showDetails(false)">show details</button>
+      </div>
+    </div>
+  </mat-card>
+  <br />
+</div>
+<mat-paginator></mat-paginator>

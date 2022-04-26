@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReifyComponent } from './reify/reify.component';
 import { ReifyService } from './services/reify.service';
 import { ToastrModule } from 'ngx-toastr';
-
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
@@ -16,6 +15,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [AppComponent, ReifyComponent],
@@ -32,6 +33,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatSelectModule,
     MatRadioModule,
     MatGridListModule,
+    MatDividerModule,
+    MatPaginatorModule,
     ToastrModule.forRoot({
       closeButton: true,
       progressBar: true,

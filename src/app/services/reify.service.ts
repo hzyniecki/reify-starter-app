@@ -7,17 +7,20 @@ import { catchError, throwError } from 'rxjs';
 })
 export class ReifyService {
   public errorMessage: any;
-  public petStoreInventory = [{}];
+  public pageNumber = '';
+  public pagesize = '';
 
   constructor(public http: HttpClient) {}
 
   ngOnInit() {}
 
-  public getPetStoreInventory(): any {
-    return this.http.get('https://petstore.swagger.io/v2/store/inventory').pipe(
-      catchError((err) => {
-        return throwError(() => new err());
-      })
-    );
+  public getTrialsId(pageSize?, pageNumber?): any {
+    return this.http
+      .get('https://frontend-interview-20210623.herokuapp.com/trials')
+      .pipe(
+        catchError((err) => {
+          return throwError(() => new err());
+        })
+      );
   }
 }
